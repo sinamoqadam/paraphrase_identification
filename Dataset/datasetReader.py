@@ -11,7 +11,7 @@ def read_tsv(dataset_path):
         for line in reader:
             questions1.append(line['question1'])
             questions2.append(line['question2'])
-            labels.append(line['is_duplicate'])
+            labels.append(int(line['is_duplicate']))
 
     return questions1, questions2, labels
 
