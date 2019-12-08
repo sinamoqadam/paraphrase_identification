@@ -2,6 +2,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing import sequence
 import csv
 
+
 def read_tsv(dataset_path):
     questions1 = []
     questions2 = []
@@ -37,9 +38,5 @@ def read_dataset(dataset_path, train_sample_number, max_question_length=50):
     test1 = q1sequence[train_sample_number:]
     test2 = q2sequence[train_sample_number:]
     test_label = labels[train_sample_number:]
-    # Y = np.zeros(shape=[len(labels)], dtype=np.int)
-    #
-    # for i in range(len(labels)):
-    #     Y[i] = labels[i]
 
     return train1, train2, train_label, test1, test2, test_label
