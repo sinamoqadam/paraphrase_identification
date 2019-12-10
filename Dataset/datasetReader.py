@@ -1,18 +1,25 @@
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing import sequence
+from random import shuffle
 import csv
 
 
 def read_tsv(dataset_path):
+    dataset = []
     questions1 = []
     questions2 = []
     labels = []
     with open(dataset_path) as tsvfile:
         reader = csv.DictReader(tsvfile, delimiter='\t')
         for line in reader:
-            questions1.append(line['question1'])
-            questions2.append(line['question2'])
-            labels.append(int(line['is_duplicate']))
+            dataset.append([line['question1'], line['question1'], line['is_duplicate']])
+
+    shuffle(dataset)
+
+    for i in range(len(dataset)):
+        questions1.append(dataset[i][0])
+        questions2.append(dataset[i][1])
+        labels.append(int(dataset[i][2]))
 
     return questions1, questions2, labels
 
