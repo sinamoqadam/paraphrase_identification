@@ -29,7 +29,7 @@ def read_dataset(dataset_path, train_sample_number, max_question_length=50):
     assert len(questions1) == len(labels)
     assert len(questions2) == len(labels)
 
-    tokenizer = Tokenizer(num_words=20000)
+    tokenizer = Tokenizer(num_words=5000)
     tokenizer.fit_on_texts(questions1 + questions2)
 
     q1sequence = tokenizer.texts_to_sequences(questions1)
